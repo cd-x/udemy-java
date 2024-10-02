@@ -8,7 +8,7 @@ public class SubClass implements SuperClass{
         System.out.println("SubClass::add()");
         return x+y+z;
     }
-    public int add(int...x){
+    public int add(int...x) throws Exception{
         System.out.println("SubClass::add([...args])");
         return 0;
     }
