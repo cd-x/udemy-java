@@ -1,27 +1,14 @@
 package main.java;
 
-import main.java.ExceptionHandling.DivideByZero;
-import main.java.collections.implementation.Stack;
-import main.java.collections.interfaces.IStack;
-import main.java.implementation.DemoInnerClass;
-import main.java.implementation.DummyAutoCloseable;
-import main.java.implementation.SubClass;
-import main.java.implementation.SuperClass;
-import java.io.FileInputStream;
-import java.util.Scanner;
+import main.java.threading.First;
+import main.java.threading.Second;
 
 public class Main {
-    //static FileInputStream fi;
     static public void main(String[] args) {
-        IStack st = new Stack(2);
-        try{
-            st.push(1);
-            st.push(2);
-            st.push(3);
-        }
-        catch (Exception e){
-            System.out.println(e);
-        }
+        Thread t1 = new First();
+        Thread t2 = new Thread(new Second(),"Second Thread");
+        t1.start();
+        t2.start();
     }
 }
 
