@@ -5,7 +5,7 @@ import main.java.threading.Second;
 
 public class Main {
     static public void main(String[] args) {
-        Thread t1 = new First();
+        First t1 = new First();
         Thread t2 = new Thread(new Second(),"Second Thread");
         t1.start();
         t2.start();
