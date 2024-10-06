@@ -1,10 +1,12 @@
 package main.java.threading;
 
-public class Second implements Runnable{
+public class Second extends Thread{
+    private Display d;
+    public Second(Display d){
+        this.d = d;
+    }
     @Override
     public void run(){
-        while (!Thread.currentThread().isInterrupted()){
-            System.out.println("Second::run(), name: "+ Thread.currentThread().getName());
-        }
+        d.display("Welcome to world!, this is second thread");
     }
 }

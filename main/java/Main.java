@@ -1,12 +1,14 @@
 package main.java;
 
+import main.java.threading.Display;
 import main.java.threading.First;
 import main.java.threading.Second;
 
 public class Main {
     static public void main(String[] args) {
-        First t1 = new First();
-        Thread t2 = new Thread(new Second(),"Second Thread");
+        Display d = new Display();
+        First t1 = new First(d);
+        Second t2 = new Second(d);
         t1.start();
         t2.start();
     }
