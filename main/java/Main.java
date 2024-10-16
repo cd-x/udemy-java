@@ -1,15 +1,13 @@
 package main.java;
 
 import main.java.exploreLang.Wrapper;
+import main.java.implementation.Dept;
 import main.java.threading.*;
 
 public class Main {
     static public void main(String[] args) {
-        String s = "Hello";
-        StringBuffer sb = new StringBuffer("Hello");
-        sb.chars();
-        StringBuilder sbl = new StringBuilder("builder");
-        System.out.println(sb);
+        Dept d = Dept.valueOf("MECH2");
+        System.out.println(d.ordinal());
     }
 }
 
