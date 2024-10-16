@@ -6,8 +6,8 @@ import main.java.threading.*;
 
 public class Main {
     static public void main(String[] args) {
-        Dept d = Dept.valueOf("MECH2");
-        System.out.println(d.ordinal());
+        Dept d = Dept.valueOf("MCA");
+        System.out.println(d.ordinal()+ " Head->"+ d.getHead()+" location ->"+ d.getLocation());
     }
 }
 
