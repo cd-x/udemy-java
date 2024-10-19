@@ -9,14 +9,10 @@ import java.lang.annotation.Annotation;
 
 public class Main {
     static public void main(String[] args) {
-        LambdaInterface l = new LambdaInterface() {
-            @Override
-            public void display() {
+        LambdaInterface l = () -> {
                 System.out.println("This is lambda method");
-            }
         };
         l.display();
-
     }
 }
 
