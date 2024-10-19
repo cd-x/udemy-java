@@ -1,13 +1,21 @@
 package main.java;
 
-import main.java.exploreLang.Wrapper;
-import main.java.implementation.Dept;
-import main.java.threading.*;
+
+import main.java.annotations.CustomAnnotation;
+import main.java.implementation.AnnotationDemo;
+
+import java.lang.annotation.Annotation;
 
 public class Main {
     static public void main(String[] args) {
-        Dept d = Dept.valueOf("MCA");
-        System.out.println(d.ordinal()+ " Head->"+ d.getHead()+" location ->"+ d.getLocation());
+        AnnotationDemo ad = new AnnotationDemo();
+        try {
+            CustomAnnotation customAnnotation = ad.getClass().getMethod("show").getAnnotation(CustomAnnotation.class);
+            System.out.printf("Author: %s, Version: %s", customAnnotation.name(), customAnnotation.annotationVersion());
+        }catch (NoSuchMethodException nse){
+            nse.printStackTrace();
+        }
+
     }
 }
 
