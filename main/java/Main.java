@@ -3,18 +3,19 @@ package main.java;
 
 import main.java.annotations.CustomAnnotation;
 import main.java.implementation.AnnotationDemo;
+import main.java.interfaces.LambdaInterface;
 
 import java.lang.annotation.Annotation;
 
 public class Main {
     static public void main(String[] args) {
-        AnnotationDemo ad = new AnnotationDemo();
-        try {
-            CustomAnnotation customAnnotation = ad.getClass().getMethod("show").getAnnotation(CustomAnnotation.class);
-            System.out.printf("Author: %s, Version: %s", customAnnotation.name(), customAnnotation.annotationVersion());
-        }catch (NoSuchMethodException nse){
-            nse.printStackTrace();
-        }
+        LambdaInterface l = new LambdaInterface() {
+            @Override
+            public void display() {
+                System.out.println("This is lambda method");
+            }
+        };
+        l.display();
 
     }
 }
