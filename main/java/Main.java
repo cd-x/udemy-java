@@ -3,15 +3,14 @@ package main.java;
 
 import main.java.annotations.CustomAnnotation;
 import main.java.implementation.AnnotationDemo;
+import main.java.implementation.LambdaImpl;
 import main.java.interfaces.LambdaInterface;
 
 import java.lang.annotation.Annotation;
 
 public class Main {
     static public void main(String[] args) {
-        LambdaInterface l = () -> {
-                System.out.println("This is lambda method");
-        };
+        LambdaInterface l = LambdaImpl::display;
         l.display();
     }
 }
