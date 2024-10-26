@@ -1,22 +1,12 @@
 package main.java;
 
 
-import main.java.delta.Student;
-import main.java.stream.DataStreamDemo;
+import main.java.utils.impl.ConfigFileReader;
 
 public class Main {
     static public void main(String[] args) {
-        DataStreamDemo ds = new DataStreamDemo();
-        Student s = new Student();
-        s.setRollNumber(123);
-        s.setName("Rakesh");
-        s.setDept("ECD");
-        try {
-            ds.write(s);
-            ds.read();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        String outputPath = ConfigFileReader.getProperty("targetPath");
+
     }
 }
 
