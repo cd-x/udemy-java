@@ -1,17 +1,22 @@
 package main.java;
 
 
-import main.java.annotations.CustomAnnotation;
-import main.java.implementation.AnnotationDemo;
-import main.java.implementation.LambdaImpl;
-import main.java.interfaces.LambdaInterface;
-
-import java.lang.annotation.Annotation;
+import main.java.delta.Student;
+import main.java.stream.DataStreamDemo;
 
 public class Main {
     static public void main(String[] args) {
-        LambdaInterface l = LambdaImpl::display;
-        l.display();
+        DataStreamDemo ds = new DataStreamDemo();
+        Student s = new Student();
+        s.setRollNumber(123);
+        s.setName("Rakesh");
+        s.setDept("ECD");
+        try {
+            ds.write(s);
+            ds.read();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
 
