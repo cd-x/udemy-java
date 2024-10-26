@@ -6,15 +6,15 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class Serialization {
-    public void write(Object object) throws Exception{
-        FileOutputStream fo = new FileOutputStream("out/production/untitled/main/resources/seralized.txt");
+    public void write(Object object, String path) throws Exception{
+        FileOutputStream fo = new FileOutputStream(path);
         ObjectOutputStream oos = new ObjectOutputStream(fo);
         oos.writeObject(object);
         oos.close();
         fo.close();
     }
-    public void read() throws Exception{
-        FileInputStream fi = new FileInputStream("out/production/untitled/main/resources/seralized.txt");
+    public void read(String path) throws Exception{
+        FileInputStream fi = new FileInputStream(path);
         ObjectInputStream oi = new ObjectInputStream(fi);
         System.out.println(oi.readObject());
         oi.close();

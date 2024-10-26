@@ -8,20 +8,22 @@ public class StudentSerializable implements Serializable {
     private int rollNumber;
     private String name;
     private static int batch = 2024;
-    transient private String transientField;
+    transient private String position;
 
     @Override
     public String toString() {
         return "StudentSerializable{" +
                 "rollNumber=" + rollNumber +
                 ", Name='" + name + '\'' +
-                ", transientField='" + transientField + '\'' +
+                ", Batch='" + batch + '\'' +
+                ", position='" + position + '\'' +
                 '}';
     }
 
-    public StudentSerializable(int rollNumber, String name) {
+    public StudentSerializable(int rollNumber, String name, String position) {
         this.rollNumber = rollNumber;
         this.name = name;
+        this.position = position;
     }
 
     public int getRollNumber() {
@@ -48,11 +50,11 @@ public class StudentSerializable implements Serializable {
         StudentSerializable.batch = batch;
     }
 
-    public String getTransientField() {
-        return transientField;
+    public String getPosition() {
+        return position;
     }
 
-    public void setTransientField(String transientField) {
-        this.transientField = transientField;
+    public void setPosition(String position) {
+        this.position = position;
     }
 }

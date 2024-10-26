@@ -1,13 +1,22 @@
 package main.java;
 
 
+import main.java.delta.StudentSerializable;
+import main.java.stream.Serialization;
 import main.java.utils.impl.ConfigFileReader;
 import main.java.utils.interfaces.IServiceUtils;
 
 public class Main {
     static public void main(String[] args) {
         String outputPath = IServiceUtils.getPath();
-        System.out.println(outputPath);
+        Serialization serialization = new Serialization();
+        StudentSerializable s = new StudentSerializable(123, "Rakesh", "First");
+        try {
+            serialization.write(s, outputPath);
+            serialization.read(outputPath);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
 
