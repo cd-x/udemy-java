@@ -2,11 +2,12 @@ package main.java;
 
 
 import main.java.utils.impl.ConfigFileReader;
+import main.java.utils.interfaces.IServiceUtils;
 
 public class Main {
     static public void main(String[] args) {
-        String outputPath = ConfigFileReader.getProperty("targetPath");
-
+        String outputPath = IServiceUtils.getPath();
+        System.out.println(outputPath);
     }
 }
 
