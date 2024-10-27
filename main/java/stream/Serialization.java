@@ -13,11 +13,12 @@ public class Serialization {
         oos.close();
         fo.close();
     }
-    public void read(String path) throws Exception{
+    public Object read(String path) throws Exception{
         FileInputStream fi = new FileInputStream(path);
         ObjectInputStream oi = new ObjectInputStream(fi);
-        System.out.println(oi.readObject());
+        Object object = oi.readObject();
         oi.close();
         fi.close();
+        return object;
     }
 }
