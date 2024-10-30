@@ -1,15 +1,11 @@
 package main.java;
 
-
-import main.java.generics.Apple;
-import main.java.generics.Banana;
-import main.java.generics.ExportFruits;
-import main.java.generics.Fruits;
+import main.java.generics.GenericMethods;
 
 public class Main {
     static public void main(String[] args) {
-        ExportFruits<Fruits> exportFruits = new ExportFruits<>();
-        exportFruits.pack(new Apple());
-        exportFruits.pack(new Banana());
+        GenericMethods gm = new GenericMethods();
+        gm.display(123);
+        gm.display("hello");
     }
 }
