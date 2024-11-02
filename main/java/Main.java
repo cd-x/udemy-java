@@ -15,6 +15,7 @@ public class Main {
         stringArray.add("world");
         stringArray.add("welcome");
         gm.display(integerArray);
+        // throws error
         gm.display(stringArray);
     }
 }

@@ -1,7 +1,7 @@
 package main.java.generics;
 
 public class GenericMethods {
-    public void display(Array<?> obj) {
+    public <T> void display(Array<? extends Number> obj) {
         obj.print();
     }
 }
