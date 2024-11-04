@@ -1,21 +1,16 @@
 package main.java;
 
-import main.java.generics.Array;
-import main.java.generics.GenericMethods;
+
+import main.java.delta.Student;
+
+import java.util.TreeSet;
 
 public class Main {
     static public void main(String[] args) {
-        GenericMethods gm = new GenericMethods();
-        Array<Integer> integerArray = new Array<>();
-        integerArray.add(1);
-        integerArray.add(23);
-        integerArray.add(11);
-        Array<String> stringArray = new Array<>();
-        stringArray.add("Hello");
-        stringArray.add("world");
-        stringArray.add("welcome");
-        gm.display(integerArray);
-        // throws error
-        gm.display(stringArray);
+        TreeSet<Student> ts = new TreeSet<>();
+        ts.add(new Student(1, "qd"));
+        ts.add(new Student(23, "safd"));
+        boolean x = ts.contains(new Student(24, "safd"));
+        System.out.println(x);
     }
 }

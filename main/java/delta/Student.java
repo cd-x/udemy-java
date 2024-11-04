@@ -1,6 +1,6 @@
 package main.java.delta;
 
-public class Student {
+public class Student implements Comparable {
     private int rollNumber;
     private String name;
     private String dept;
@@ -27,5 +27,19 @@ public class Student {
 
     public void setDept(String dept) {
         this.dept = dept;
+    }
+
+    public Student(int rollNumber, String name) {
+        this.rollNumber = rollNumber;
+        this.name = name;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Student student = (Student) o;
+        if (this.getRollNumber() == student.getRollNumber()) {
+            return this.getName().compareToIgnoreCase(student.getName());
+        }
+        return Integer.compare(this.getRollNumber(), student.getRollNumber());
     }
 }
