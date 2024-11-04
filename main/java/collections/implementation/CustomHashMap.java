@@ -3,11 +3,11 @@ package main.java.collections.implementation;
 import main.java.collections.interfaces.IMap;
 
 import java.util.LinkedList;
-import java.util.Vector;
 
 public class CustomHashMap<K, V> implements IMap<K, V> {
     private Integer size = 0;
     private Integer TABLE_SIZE = 0;
+    private final Integer DEFAULT_TABLE_SIZE = 16;
     private float loadFactor = 0.75f;
 
     private final class Node {
@@ -22,21 +22,22 @@ public class CustomHashMap<K, V> implements IMap<K, V> {
         }
     }
 
-    private Vector<LinkedList<Node>> hashTable;
+    private LinkedList<Node>[] hashTable;
 
     public CustomHashMap() {
-        TABLE_SIZE = 16;
+        hashTable = new LinkedList[DEFAULT_TABLE_SIZE];
+        TABLE_SIZE = DEFAULT_TABLE_SIZE;
     }
 
     public CustomHashMap(int initCap, float loadFactor) {
-        hashTable = new Vector<>(initCap);
+        hashTable = new LinkedList[initCap];
         TABLE_SIZE = initCap;
         this.loadFactor = loadFactor;
     }
 
     @Override
     public V get(K key) {
-        for (Node node : hashTable.get(bucketIndex(key))) {
+        for (Node node : hashTable[bucketIndex(key)]) {
             if (node.hash == getHash(key)) {
                 return node.value;
             }
@@ -49,7 +50,7 @@ public class CustomHashMap<K, V> implements IMap<K, V> {
         if (size >= loadFactor * TABLE_SIZE) {
             hashTable = resizeTable(hashTable, 2 * TABLE_SIZE);
         }
-        hashTable.get(bucketIndex(key)).addLast(new Node(getHash(key), key, value));
+        safeAppend(hashTable, new Node(getHash(key), key, value));
         size++;
     }
 
@@ -65,16 +66,24 @@ public class CustomHashMap<K, V> implements IMap<K, V> {
         return getHash(key) & (TABLE_SIZE - 1);
     }
 
-    private int rehashBucketIndex(int hash) {
+    private int bucketIndex(int hash) {
         return hash & (TABLE_SIZE - 1);
     }
 
-    private Vector<LinkedList<Node>> resizeTable(Vector<LinkedList<Node>> hashTable, Integer newSize) {
-        Vector<LinkedList<Node>> newHashTable = new Vector<>(newSize);
+    private void safeAppend(LinkedList<Node>[] hashTable, Node node) {
+        int bktIndex = bucketIndex(node.hash);
+        if (hashTable[bktIndex] == null) {
+            hashTable[bktIndex] = new LinkedList<>();
+        }
+        hashTable[bktIndex].addLast(node);
+    }
+
+    private LinkedList<Node>[] resizeTable(LinkedList<Node>[] hashTable, Integer newSize) {
+        LinkedList<Node>[] newHashTable = new LinkedList[newSize];
         TABLE_SIZE = newSize;
         for (LinkedList<Node> bucket : hashTable) {
             for (Node node : bucket) {
-                newHashTable.get(rehashBucketIndex(node.hash)).addLast(node);
+                safeAppend(newHashTable, node);
             }
         }
         return newHashTable;
