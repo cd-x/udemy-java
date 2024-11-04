@@ -24,6 +24,10 @@ public class CustomHashMap<K, V> implements IMap<K, V> {
 
     private Vector<LinkedList<Node>> hashTable;
 
+    public CustomHashMap() {
+        TABLE_SIZE = 16;
+    }
+
     public CustomHashMap(int initCap, float loadFactor) {
         hashTable = new Vector<>(initCap);
         TABLE_SIZE = initCap;
