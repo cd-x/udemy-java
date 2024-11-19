@@ -1,19 +1,15 @@
 package main.java;
 
 
-import java.util.Hashtable;
-import java.util.Map;
-import java.util.Set;
+import java.util.StringTokenizer;
 
 public class Main {
     static public void main(String[] args) {
-        Hashtable<Integer, String> hash = new Hashtable<>();
-        hash.put(1, "one");
-        hash.put(1, "oneagain");
-        hash.put(2, "two");
-        Set<Map.Entry<Integer, String>> entries = hash.entrySet();
-        for (Map.Entry<Integer, String> entry : entries) {
-            System.out.println(entry.toString());
+        StringTokenizer tokenizer = new StringTokenizer("any;time;anywhere.call;me.aytime", ";.");
+        Integer token = tokenizer.countTokens();
+        System.out.println(token);
+        while (tokenizer.hasMoreTokens()) {
+            System.out.println(tokenizer.nextToken());
         }
     }
 }
