@@ -1,22 +1,19 @@
 package main.java;
 
 
-import java.util.LinkedHashMap;
+import java.util.Hashtable;
 import java.util.Map;
+import java.util.Set;
 
 public class Main {
     static public void main(String[] args) {
-        LinkedHashMap<Integer, String> linkedHashMap = new LinkedHashMap<>(3, 0.75f, true) {
-            @Override
-            protected boolean removeEldestEntry(Map.Entry e) {
-                return size() > 3;
-            }
-        };
-        linkedHashMap.put(23, "Hello");
-        linkedHashMap.put(46, "world");
-        linkedHashMap.put(1, "first");
-        linkedHashMap.put(2, "second");
-        linkedHashMap.get(46);
-        System.out.println(linkedHashMap);
+        Hashtable<Integer, String> hash = new Hashtable<>();
+        hash.put(1, "one");
+        hash.put(1, "oneagain");
+        hash.put(2, "two");
+        Set<Map.Entry<Integer, String>> entries = hash.entrySet();
+        for (Map.Entry<Integer, String> entry : entries) {
+            System.out.println(entry.toString());
+        }
     }
 }
