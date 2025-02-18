@@ -6,7 +6,9 @@ public class SynchronizeTest implements Runnable{
     @Override
     public void run() {
         for(int i=0;i<10000;i++){
-            this.count++;
+            synchronized (this){
+                this.count++;
+            }
         }
         System.out.println(Thread.currentThread().getName()+"-Count: "+count);
     }
